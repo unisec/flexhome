@@ -1,4 +1,4 @@
-![Banner Logo](../../../docs/images/banner-logo.svg)
+![Banner Logo](https://imgs.unisec.com.br/unicontrol/Banner.svg)
 
 <p style="width: 100%; display: flex;">
     <img width="170"  src="https://esphome.io/_images/made-for-esphome-black-on-white.svg" />&nbsp;
