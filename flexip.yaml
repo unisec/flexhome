@@ -1,0 +1,33 @@
+esphome:
+  name: flexip
+  platform: ESP32
+  board: nodemcu-32s
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_IN
+  phy_addr: 1
+
+web_server:
+
+api:
+  reboot_timeout: 0s
+
+ota:
+
+status_led:
+  pin:
+    number: GPIO2
+    inverted: yes
+
+logger:
+  level: DEBUG
+
+output:
+  - platform: gpio
+    id: eth_phy
+    pin:
+      number: 17
+      inverted: yes

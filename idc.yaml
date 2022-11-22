@@ -1,0 +1,344 @@
+esphome:
+  name: flexip-idc
+  platform: ESP32
+  board: nodemcu-32s
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_IN
+  phy_addr: 1
+
+web_server:
+
+api:
+  reboot_timeout: 0s
+
+ota:
+
+status_led:
+  pin:
+    number: GPIO2
+    inverted: yes
+
+logger:
+  level: DEBUG
+
+i2c:
+  - id: bus_a
+    sda: 13
+    scl: 14
+    scan: True
+    frequency: 100kHz
+
+  - id: bus_b
+    sda: 33
+    scl: 32
+    scan: True
+    frequency: 100kHz
+
+mcp23017:
+  - id: IDC_M1_MCP2_I2CA_IN
+    i2c_id: bus_a
+    address: 0x21
+
+  - id: IDC_M1_MCP4_I2CA_IN
+    i2c_id: bus_a
+    address: 0x23
+
+binary_sensor:
+  - platform: gpio
+    name: M1 INPUT A1
+    id: M1_INPUT_A1
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 15
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT A2
+    id: M1_INPUT_A2
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 14
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT A3
+    id: M1_INPUT_A3
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 13
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT A4
+    id: M1_INPUT_A4
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 12
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT B1
+    id: M1_INPUT_B1
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 11
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT B2
+    id: M1_INPUT_B2
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 10
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT B3
+    id: M1_INPUT_B3
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 9
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT B4
+    id: M1_INPUT_B4
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 8
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT C1
+    id: M1_INPUT_C1
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 7
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT C2
+    id: M1_INPUT_C2
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 6
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT C3
+    id: M1_INPUT_C3
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 5
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT C4
+    id: M1_INPUT_C4
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 4
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT D1
+    id: M1_INPUT_D1
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 3
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT D2
+    id: M1_INPUT_D2
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 2
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT D3
+    id: M1_INPUT_D3
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 1
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT D4
+    id: M1_INPUT_D4
+    pin:
+      mcp23xxx: IDC_M1_MCP4_I2CA_IN
+      number: 0
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT E1
+    id: M1_INPUT_E1
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 0
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT E2
+    id: M1_INPUT_E2
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 1
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT E3
+    id: M1_INPUT_E3
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 2
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT E4
+    id: M1_INPUT_E4
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 3
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT F1
+    id: M1_INPUT_F1
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 4
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT F2
+    id: M1_INPUT_F2
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 5
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT F3
+    id: M1_INPUT_F3
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 6
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT F4
+    id: M1_INPUT_F4
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 7
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT G1
+    id: M1_INPUT_G1
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 8
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT G2
+    id: M1_INPUT_G2
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 9
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT G3
+    id: M1_INPUT_G3
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 10
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT G4
+    id: M1_INPUT_G4
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 11
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT H1
+    id: M1_INPUT_H1
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 12
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT H2
+    id: M1_INPUT_H2
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 13
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT H3
+    id: M1_INPUT_H3
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 14
+      mode: INPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 INPUT H4
+    id: M1_INPUT_H4
+    pin:
+      mcp23xxx: IDC_M1_MCP2_I2CA_IN
+      number: 15
+      mode: INPUT
+      inverted: False
+
+output:
+  - platform: gpio
+    id: eth_phy
+    pin:
+      number: 17
+      inverted: yes

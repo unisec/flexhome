@@ -1,0 +1,489 @@
+esphome:
+  name: flexip-iodc
+  platform: ESP32
+  board: nodemcu-32s
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_IN
+  phy_addr: 1
+
+web_server: 
+
+api:
+  reboot_timeout: 0s
+
+ota:
+
+status_led:
+  pin:
+    number: GPIO2
+    inverted: yes
+
+logger:
+  level: DEBUG
+
+i2c:
+  - id: bus_a
+    sda: 13
+    scl: 14
+    scan: True
+    frequency: 100kHz
+
+  - id: bus_b
+    sda: 33
+    scl: 32
+    scan: True
+    frequency: 100kHz
+
+mcp23017:
+  - id: IODC_M1_MCP3_I2CA_OUT
+    i2c_id: bus_a
+    address: 0x25
+
+  - id: IODC_M1_MCP4_I2CA_IN
+    i2c_id: bus_a
+    address: 0x23
+
+binary_sensor:
+  - platform: gpio
+    name: M1 ENTRADA A1
+    id: M1_ENTRADA_A1
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 15
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_E1
+
+  - platform: gpio
+    name: M1 ENTRADA A2
+    id: M1_ENTRADA_A2
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 14
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_E2
+
+  - platform: gpio
+    name: M1 ENTRADA A3
+    id: M1_ENTRADA_A3
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 13
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_E3
+
+  - platform: gpio
+    name: M1 ENTRADA A4
+    id: M1_ENTRADA_A4
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 12
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_E4
+
+  - platform: gpio
+    name: M1 ENTRADA B1
+    id: M1_ENTRADA_B1
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 11
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_F1
+
+  - platform: gpio
+    name: M1 ENTRADA B2
+    id: M1_ENTRADA_B2
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 10
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_F2
+
+  - platform: gpio
+    name: M1 ENTRADA B3
+    id: M1_ENTRADA_B3
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 9
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_F3
+
+  - platform: gpio
+    name: M1 ENTRADA B4
+    id: M1_ENTRADA_B4
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 8
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_F4
+
+  - platform: gpio
+    name: M1 ENTRADA C1
+    id: M1_ENTRADA_C1
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 7
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_G1
+
+  - platform: gpio
+    name: M1 ENTRADA C2
+    id: M1_ENTRADA_C2
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 6
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_G2
+
+  - platform: gpio
+    name: M1 ENTRADA C3
+    id: M1_ENTRADA_C3
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 5
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_G3
+
+  - platform: gpio
+    name: M1 ENTRADA C4
+    id: M1_ENTRADA_C4
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 4
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_G4
+
+  - platform: gpio
+    name: M1 ENTRADA D1
+    id: M1_ENTRADA_D1
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 3
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_H1
+
+  - platform: gpio
+    name: M1 ENTRADA D2
+    id: M1_ENTRADA_D2
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 2
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_H2
+
+  - platform: gpio
+    name: M1 ENTRADA D3
+    id: M1_ENTRADA_D3
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 1
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_H3
+
+  - platform: gpio
+    name: M1 ENTRADA D4
+    id: M1_ENTRADA_D4
+    pin:
+      mcp23xxx: IODC_M1_MCP4_I2CA_IN
+      number: 0
+      mode: INPUT
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for 100ms to 950ms
+        then:
+          - light.toggle: M1_LIGHT_H4
+
+output:
+  - platform: gpio
+    id: eth_phy
+    pin:
+      number: 17
+      inverted: yes
+
+  - platform: gpio
+    id: M1_OUTPUT_E1
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 0
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_E2
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 1
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_E3
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 2
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_E4
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 3
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_F1
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 4
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_F2
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 5
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_F3
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 6
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_F4
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 7
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_G1
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 8
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_G2
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 9
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_G3
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 10
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_G4
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 11
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_H1
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 12
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_H2
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 13
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_H3
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 14
+      mode: OUTPUT
+      inverted: True
+
+  - platform: gpio
+    id: M1_OUTPUT_H4
+    pin:
+      mcp23xxx: IODC_M1_MCP3_I2CA_OUT
+      number: 15
+      mode: OUTPUT
+      inverted: True
+
+light:
+  - platform: binary
+    name: M1 LIGHT E1
+    id: M1_LIGHT_E1
+    output: M1_OUTPUT_E1
+
+  - platform: binary
+    name: M1 LIGHT E2
+    id: M1_LIGHT_E2
+    output: M1_OUTPUT_E2
+
+  - platform: binary
+    name: M1 LIGHT E3
+    id: M1_LIGHT_E3
+    output: M1_OUTPUT_E3
+
+  - platform: binary
+    name: M1 LIGHT E4
+    id: M1_LIGHT_E4
+    output: M1_OUTPUT_E4
+
+  - platform: binary
+    name: M1 LIGHT F1
+    id: M1_LIGHT_F1
+    output: M1_OUTPUT_F1
+
+  - platform: binary
+    name: M1 LIGHT F2
+    id: M1_LIGHT_F2
+    output: M1_OUTPUT_F2
+
+  - platform: binary
+    name: M1 LIGHT F3
+    id: M1_LIGHT_F3
+    output: M1_OUTPUT_F3
+
+  - platform: binary
+    name: M1 LIGHT F4
+    id: M1_LIGHT_F4
+    output: M1_OUTPUT_F4
+
+  - platform: binary
+    name: M1 LIGHT G1
+    id: M1_LIGHT_G1
+    output: M1_OUTPUT_G1
+
+  - platform: binary
+    name: M1 LIGHT G2
+    id: M1_LIGHT_G2
+    output: M1_OUTPUT_G2
+
+  - platform: binary
+    name: M1 LIGHT G3
+    id: M1_LIGHT_G3
+    output: M1_OUTPUT_G3
+
+  - platform: binary
+    name: M1 LIGHT G4
+    id: M1_LIGHT_G4
+    output: M1_OUTPUT_G4
+
+  - platform: binary
+    name: M1 LIGHT H1
+    id: M1_LIGHT_H1
+    output: M1_OUTPUT_H1
+
+  - platform: binary
+    name: M1 LIGHT H2
+    id: M1_LIGHT_H2
+    output: M1_OUTPUT_H2
+
+  - platform: binary
+    name: M1 LIGHT H3
+    id: M1_LIGHT_H3
+    output: M1_OUTPUT_H3
+
+  - platform: binary
+    name: M1 LIGHT H4
+    id: M1_LIGHT_H4
+    output: M1_OUTPUT_H4

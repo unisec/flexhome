@@ -1,0 +1,196 @@
+esphome:
+  name: oac
+  platform: ESP32
+  board: nodemcu-32s
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_IN
+  phy_addr: 1
+
+web_server: 
+
+api:
+  reboot_timeout: 0s
+
+ota:
+
+status_led:
+  pin:
+    number: GPIO2
+    inverted: yes
+
+logger:
+  level: DEBUG
+
+i2c:
+  - id: bus_a
+    sda: 13
+    scl: 14
+    scan: True
+    frequency: 100kHz
+
+  - id: bus_b
+    sda: 33
+    scl: 32
+    scan: True
+    frequency: 100kHz
+
+mcp23017:
+  - id: OAC_M1_MCP1_I2CB_OUT
+    i2c_id: bus_b
+    address: 0x20
+
+output:
+  - platform: gpio
+    id: eth_phy
+    pin:
+      number: 17
+      inverted: yes
+
+switch:
+  - platform: gpio
+    name: M1 OUTPUT A1
+    id: M1_OUTPUT_A1
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 0
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT A2
+    id: M1_OUTPUT_A2
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 1
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT A3
+    id: M1_OUTPUT_A3
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 2
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT A4
+    id: M1_OUTPUT_A4
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 3
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT B1
+    id: M1_OUTPUT_B1
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 4
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT B2
+    id: M1_OUTPUT_B2
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 5
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT B3
+    id: M1_OUTPUT_B3
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 6
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT B4
+    id: M1_OUTPUT_B4
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 7
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT C1
+    id: M1_OUTPUT_C1
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 8
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT C2
+    id: M1_OUTPUT_C2
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 9
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT C3
+    id: M1_OUTPUT_C3
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 10
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT C4
+    id: M1_OUTPUT_C4
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 11
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT D1
+    id: M1_OUTPUT_D1
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 12
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT D2
+    id: M1_OUTPUT_D2
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 13
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT D3
+    id: M1_OUTPUT_D3
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 14
+      mode: OUTPUT
+      inverted: False
+
+  - platform: gpio
+    name: M1 OUTPUT D4
+    id: M1_OUTPUT_D4
+    pin:
+      mcp23xxx: OAC_M1_MCP1_I2CB_OUT
+      number: 15
+      mode: OUTPUT
+      inverted: False
