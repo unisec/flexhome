@@ -1,0 +1,16 @@
+{
+  "name": "oac",
+  "home_assistant_domain": "esphome",
+  "funding_url": "https://esphome.io/guides/supporters.html",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "https://unisec.github.io/flexhome/install/firmwares/firmware-factory-oac.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
